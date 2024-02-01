@@ -1,0 +1,25 @@
+<?php
+session_start();
+
+// Define login credentials
+$username = "admin";
+$password = "password";
+
+// Get user input from login form
+$user_name = $_POST['Uname'];
+$user_pass = $_POST['Pass'];
+
+// Validate user input
+if ($user_name == $username && $user_pass == $password) {
+    // Set session variables
+    $_SESSION['loggedin'] = true;
+    $_SESSION['username'] = $user_name;
+
+    // Redirect to sharing space page
+    header("Location: sharing_space.php");
+    exit;
+} else {
+    // Display error message
+    echo "Invalid username or password";
+}
+?>
